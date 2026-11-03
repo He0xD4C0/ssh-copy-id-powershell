@@ -14,13 +14,14 @@
 无需下载或克隆仓库，可直接在 PowerShell 中运行：
 
 ```powershell
-& ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/He0xD4C0/ssh-copy-id-powershell/main/ssh-copy-id.ps1'))) -User alice -RemoteHost server.example.com
+$u = 'https://raw.githubusercontent.com/He0xD4C0/ssh-copy-id-powershell/main/ssh-copy-id.ps1'
+&([scriptblock]::Create((irm $u))) alice server.example.com
 ```
 
 Windows OpenSSH 目标可追加 `-RemotePlatform Windows`：
 
 ```powershell
-& ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/He0xD4C0/ssh-copy-id-powershell/main/ssh-copy-id.ps1'))) -User alice -RemoteHost windows.example.com -RemotePlatform Windows
+&([scriptblock]::Create((irm $u))) alice windows.example.com -RemotePlatform Windows
 ```
 
 该方式会直接执行仓库 `main` 分支中的脚本；也可先阅读上方脚本源码，再执行。
